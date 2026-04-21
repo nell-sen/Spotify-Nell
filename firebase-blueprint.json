@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "Song": {
+      "title": "Song",
+      "description": "A music track in the library",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "artist": { "type": "string" },
+        "album": { "type": "string" },
+        "audioUrl": { "type": "string" },
+        "thumbnail": { "type": "string" },
+        "genre": { "type": "string" },
+        "releaseYear": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["title", "artist", "audioUrl", "thumbnail", "createdAt"]
+    },
+    "AppConfig": {
+      "title": "App Configuration",
+      "description": "Global application settings",
+      "type": "object",
+      "properties": {
+        "logoUrl": { "type": "string" }
+      }
+    },
+    "ForumMessage": {
+      "title": "Forum Message",
+      "description": "Global chat room message",
+      "type": "object",
+      "properties": {
+        "user": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["user", "text", "timestamp"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Real-time activity log",
+      "type": "object",
+      "properties": {
+        "message": { "type": "string" },
+        "timestamp": { "type": "number" },
+        "type": { "type": "string" }
+      },
+      "required": ["message", "timestamp", "type"]
+    }
+  },
+  "firestore": {
+    "/songs/{songId}": {
+      "schema": "Song",
+      "description": "Individual song document"
+    },
+    "/appConfig/main": {
+      "schema": "AppConfig",
+      "description": "Global config document"
+    },
+    "/forum/{messageId}": {
+      "schema": "ForumMessage",
+      "description": "Chat message"
+    },
+    "/notifications/{notifId}": {
+      "schema": "Notification",
+      "description": "Activity notification"
+    }
+  }
+}
